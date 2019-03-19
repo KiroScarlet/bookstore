@@ -1,10 +1,10 @@
 最近把JavaWeb的基础知识重新过了一遍，寻思着写个小项目练习一下
 网上找了个图书商城的小项目，从头到尾跟着写一下吧
-####1.环境搭建
-IDEA+Tomcat
+###1.环境搭建
+IDEA+Tomcat+MySQL
 
 直接IDEA新建一个Web项目，具体就不讲了，网上都有
-####2.功能分析
+###2.功能分析
  前台
 * 用户模块：
   * 注册
@@ -50,10 +50,21 @@ IDEA+Tomcat
   * 按状态查询订单
   * 发货
   
-####3.框架的搭建
+###3.框架的搭建
 
 3.1 导包
+* 数据库
+  * mysql驱动
+  * c3p0
+  * dbutils
+* javamail
+  * mail.jar
+  * activation.jar
+* 上传
+  * commons-fileupload
+  * commons-io
+* ajax
+  * json-lib
+
 
 3.2 创建Package
-
-3.3 表
