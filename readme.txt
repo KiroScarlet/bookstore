@@ -155,3 +155,13 @@ CREATE TABLE orderitem (
 );
 
 SELECT * FROM orderitem;
+
+用户模块
+1.用户模块相关类创建
+domain：user
+dao：UserDao
+service：UserDao
+web.servlet：UserServlet
+
+2.用户注册
+流程：
