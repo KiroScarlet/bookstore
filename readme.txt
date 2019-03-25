@@ -164,4 +164,32 @@ service：UserDao
 web.servlet：UserServlet
 
 2.用户注册
-流程：
+流程：/jsps/user/regist.jsp->UserServlet#regist()->msg.jsp
+页面：
+    regist.jsp
+        表单页面，请求UserServlet#regist()方法
+        参数：整个表单数据
+    msg.jsp
+Servlet:
+    UserServlet#regist()
+        一键封装表单数据到User form对象
+        补全：uid、激活码
+        输入校验：校验失败时：
+            保存错误信息到request
+            保存当前表单数据（form）到request（回显）
+            转发回到regist.jsp
+        调用service的regist（）方法，传递form过去
+            如果抛出异常：保存错误信息（异常信息）、保存表单数据（回显）、转发到regist.jsp
+            如果没有抛出异常：
+                发邮件（发件人、收件人、标题、内容），内容中包含超链接，超链接指向可完成激活的Servlet地址
+                保存成功信息到request
+                转发到msg.jsp
+Service:
+    UserService#regist(User form)
+        校验用户名是否重复，如果重复，抛出UserException
+        校验邮箱是否被注册，如果被注册，抛出UserException
+        把User插入到数据库中
+Dao:
+    User findByUsername（String username）：按用户名查询用户
+    User findByEmail（String email）：按email查询用户
+    void add（User form）：插入用户到数据库中

@@ -1,4 +1,4 @@
-package cn.KiroScarlet.bookstore.user.dao;
+package cn.KiroScarlet.bookstore.user.domain;
 
 /**
  * @author KiroScarlet

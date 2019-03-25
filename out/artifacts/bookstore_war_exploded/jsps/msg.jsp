@@ -21,9 +21,9 @@
   <body>
 <h1>${msg }</h1>
 <ul>
-  <li><a href="<c:url value='/index.jsp'/>">Ö÷Ò³</a></li>
-  <li><a href="<c:url value='/jsps/user/login.jsp'/>">µÇÂ¼</a></li>
-  <li><a href="<c:url value='/jsps/user/regist.jsp'/>">×¢²á</a></li>
+  <li><a href="<c:url value='/index.jsp'/>">ä¸»é¡µ</a></li>
+  <li><a href="<c:url value='/jsps/user/login.jsp'/>">ç™»å½•</a></li>
+  <li><a href="<c:url value='/jsps/user/regist.jsp'/>">æ³¨å†Œ</a></li>
 </ul>
   </body>
 </html>
