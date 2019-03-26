@@ -246,3 +246,18 @@ Dao：
 5.用户退出
 流程：top.jsp->UserServlet#quit()->login.jsp
 quit():把session销毁！
+
+
+分类模块
+1.相关类的创建
+    domain：Category
+    dao：CategoryDao
+    service：CategoryService
+    web.servlet：CategoryServlet
+2.查询所有分类
+流程：main.jsp(<iframe>)-> CategoryServelt#findAll()->left.jsp
+
+
+图书模块
+1、创建相关类
+2、查询所有图书
