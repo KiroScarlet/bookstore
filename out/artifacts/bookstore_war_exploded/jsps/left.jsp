@@ -34,13 +34,13 @@
   
   <body>
 <div>
-	<a href="<c:url value='/jsps/book/list.jsp'/>">全部分类</a>
+	<a href="<c:url value='/BookServlet?method=findAll'/>">全部分类</a>
 </div>
 
 <c:forEach items="${categoryList}" var="category">
 
 	<div>
-		<a href="<c:url value='/jsps/book/list.jsp'/>">${category.cname}</a>
+		<a href="<c:url value='/BookServlet?method=findByCategory&cid=${category.cid}'/>">${category.cname}</a>
 	</div>
 
 </c:forEach>

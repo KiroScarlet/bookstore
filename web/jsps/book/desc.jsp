@@ -53,12 +53,12 @@
   
   <body>
   <div>
-    <img src="<c:url value='/book_img/8758723-1_l.jpg'/>" border="0"/>
+    <img src="<c:url value='/${book.image}'/>" border="0"/>
   </div>
   <ul>
-    <li>书名：Java开发详解</li>
-    <li>作者：张孝祥</li>
-    <li>单价：39.9元</li>
+    <li>书名：${book.bname}</li>
+    <li>作者：${book.author}</li>
+    <li>单价：${book.price}</li>
   </ul>
   <form id="form" action="<c:url value='/jsps/cart/list.jsp'/>" method="post">
   	<input type="text" size="3" name="count" value="1"/>

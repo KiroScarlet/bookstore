@@ -261,3 +261,10 @@ quit():把session销毁！
 图书模块
 1、创建相关类
 2、查询所有图书
+流程：left.jsp（全部分类）-> BookServlet#findAll() -> list.jsp
+
+3、按分类查询图书
+流程：left.jsp（全部分类）-> BookServlet#findByCategory() -> list.jsp
+
+4、查询详细信息（加载）
+流程：list.jsp（点击某一本书）->BookServelt#load() ->desc.jsp
