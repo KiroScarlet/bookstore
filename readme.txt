@@ -243,4 +243,6 @@ Dao：
     UserDao
         User findByUsername()
 
-
+5.用户退出
+流程：top.jsp->UserServlet#quit()->login.jsp
+quit():把session销毁！

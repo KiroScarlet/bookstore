@@ -104,4 +104,9 @@ public class UserServlet extends BaseServlet{
             return "/jsps/user/login.jsp";
         }
     }
+
+    public  String quit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getSession().invalidate();
+        return "r:/index.jsp";
+    }
 }
