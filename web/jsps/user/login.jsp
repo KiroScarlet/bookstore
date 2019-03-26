@@ -23,8 +23,9 @@
   <body>
   <h1>登录</h1>
 <p style="color: red; font-weight: 900">${msg }</p>
-<form action="<c:url value='/jsps/main.jsp'/>" method="post">
-	用户名：<input type="text" name="username" value=""/><br/>
+<form action="<c:url value='/UserServlet'/>" method="post">
+	<input type="hidden" name="method" value="login"/>
+	用户名：<input type="text" name="username" value="${form.username}"/><br/>
 	密　码：<input type="password" name="password"/><br/>
 	<input type="submit" value="登录"/>
 </form>

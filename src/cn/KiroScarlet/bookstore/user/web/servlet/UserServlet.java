@@ -78,4 +78,30 @@ public class UserServlet extends BaseServlet{
         request.setAttribute("msg", "恭喜，注册成功！请马上到邮箱激活");
         return "jsps/msg.jsp";
     }
+
+    public String active(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String code = request.getParameter("code");
+        try {
+            userService.active(code);
+            request.setAttribute("msg","恭喜，激活成功");
+        } catch (UserException e) {
+            request.setAttribute("msg",e.getMessage());
+        }
+
+        return "/jsps/msg.jsp";
+    }
+
+    public String login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        User form = CommonUtils.toBean(request.getParameterMap(), User.class);
+
+        try {
+            User user = userService.login(form);
+            request.getSession().setAttribute("session_user",user);
+            return "r:/index.jsp";
+        } catch (UserException e) {
+            request.setAttribute("msg",e.getMessage());
+            request.setAttribute("form", form);
+            return "/jsps/user/login.jsp";
+        }
+    }
 }

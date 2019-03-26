@@ -43,4 +43,25 @@ public class UserDao {
             throw new RuntimeException(e);
         }
     }
+
+    //按激活码查询
+    public User findByCode(String code) {
+        String sql = "select * from tb_user where code=?";
+        try {
+            return qr.query(sql,new BeanHandler<User>(User.class),code);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    //修改指定用户的指定状态
+    public void updateState(String uid,boolean state) {
+        String sql = "update tb_user set state=? where uid=?";
+        try {
+            qr.update(sql, state, uid);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 }

@@ -193,3 +193,54 @@ Dao:
     User findByUsername（String username）：按用户名查询用户
     User findByEmail（String email）：按email查询用户
     void add（User form）：插入用户到数据库中
+
+
+3.用户激活
+用户邮件：点击超链接
+Servlet：
+    UserServlet#active()
+        获取参数：激活码
+        使用激活码调用service#active(String code)方法
+            出错时保存异常信息到request
+            转发到msg.jsp
+        保存激活成功信息到request
+        转发到msg.jsp
+Service：
+    UserService#active(String code)
+        使用code查询数据库，得到User对象
+            如果返回null，抛出异常
+        查看用户状态
+            true：抛出异常
+            false：修改用户状态为true
+Dao：
+    UserDao
+        User findByCode(String code)
+        void updateState(String uid,boolean state)
+
+页面：
+    msg.jsp
+由于没有写发送邮件的功能，测试激活的话就手动填地址栏吧。code值为数据库中查询的值
+http://localhost:8080/UserServlet?method=active&code=22E218A806D14E1B99888170644D358AE548C5BB627041338A6C96676D119E7C
+
+4.用户登录
+流程：login.jsp->UserServelt#login()->index.jsp
+Servlet：
+    UserServlet#login()
+        一键封装（只有用户名和密码）
+        调用Service方法完成登录
+            失败时保存异常信息、保存form、转发回login.jsp
+        保存用户信息到session中
+        重定向到index.jsp
+Service：
+    UserService#login（User form）
+        使用username查询数据库，得到user对象
+            如果user为null，抛出异常（用户名不存在）
+        比较form与user的状态是否相同
+            如果不同，抛出密码错误异常
+        查看用户状态：未激活状态抛出异常
+        返回user
+Dao：
+    UserDao
+        User findByUsername()
+
+
